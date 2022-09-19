@@ -13,6 +13,9 @@ pipeline {
         script {
           sh 'echo HELLO'
           sh 'pwd && ls -li'
+          withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
+                    sh "echo \"${NEXUS_PASSWORD}\" > ./.ansible_vault_file"
+                }
           withCredentials([sshUserPrivateKey(credentialsId: CREDS,
                                             keyFileVariable: 'JENKINS_PRIVATE_KEY', passphraseVariable: 'PASSPHRASE',
                                              usernameVariable: 'USERNAME')]) {
