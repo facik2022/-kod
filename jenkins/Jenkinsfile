@@ -1,6 +1,11 @@
 pipeline {
    agent any
+   environment {
+              CREDS= 'ssh_for_jenkins'
+       //     VDS_TOKEN     = credentials('clo')
 
+       //
+        }
 
   stages() {
     stage('Test1' ) {
