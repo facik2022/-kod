@@ -6,3 +6,13 @@
   tasks:
   - name: Git checkout
     ping:
+
+  - name: Install the package "foo"
+    apt:
+      name: nginx
+      state: present
+
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name:  nginx    
