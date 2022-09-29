@@ -36,38 +36,38 @@
         }
       dest: /etc/nginx/sites-available/default
 
-    - name: Copy using inline content
-      copy:
-        content: |
-           <!DOCTYPE html>
-           <html>
-           <head>
-           <title>Welcome to nginx!</title>
-           <style>
-              body {
-                  width: 35em;
-                  margin: 0 auto;
-                  font-family: Tahoma, Verdana, Arial, sans-serif;
-              }
-           </style>
-           </head>
-           <body>
-           <p><em>Thank you for using nginx.</em></p>
-           </body>
-           </html>
-        dest: /var/www/html/index.htm
+  - name: Copy using inline content
+    copy:
+      content: |
+         <!DOCTYPE html>
+         <html>
+         <head>
+         <title>Welcome to nginx!</title>
+         <style>
+            body {
+                width: 35em;
+                margin: 0 auto;
+                font-family: Tahoma, Verdana, Arial, sans-serif;
+            }
+         </style>
+         </head>
+         <body>
+         <p><em>Thank you for using nginx.</em></p>
+         </body>
+         </html>
+      dest: /var/www/html/index.htm
 
-    - name: Make sure a service is running
-      systemd:
-        state: started
-        name:  nginx
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name:  nginx
 
-    - name: stop service cron on debian, if running
-      systemd:
-        name: nginx
-        state: stopped
+  - name: stop service cron on debian, if running
+    systemd:
+      name: nginx
+      state: stopped
 
-    - name: Make sure a service is running
-      systemd:
-        state: started
-        name:  nginx
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name:  nginx
