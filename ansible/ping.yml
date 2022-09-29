@@ -52,7 +52,7 @@
          </style>
          </head>
          <body>
-         <p><em>Thank you for using nginx.</em></p>
+         <p> победа над ленью.</p>
          </body>
          </html>
       dest: /var/www/html/index.htm
