@@ -17,6 +17,12 @@
       path: /opt/ansible
       state: directory
 
+  - name: Install
+    apt:
+      name:
+        - unzip
+        - virtualenv
+
   - name: copy app
     unarchive:
       src: 'app.zip'
