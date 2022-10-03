@@ -15,7 +15,7 @@
   - name: create clear ansible
     file:
       path: /opt/ansible
-      state: present
+      state: directory
 
   - name: copy app
     unarchive:
