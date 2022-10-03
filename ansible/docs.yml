@@ -7,6 +7,20 @@
   - name: Git checkout
     ping:
 
+  - name: create clear ansible
+    file:
+      path: /opt/ansible
+      state: absent
+
+  - name: create clear ansible
+    file:
+      path: /opt/ansible
+      state: present
+
+  - name: copy app
+    unarchive:
+      src: 'app.zip'
+      dest: /opt/ansible/
   # - name: Install the package "foo"
   #   apt:
   #     name: nginx
