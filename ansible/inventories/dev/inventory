@@ -1,5 +1,4 @@
 [web-servers]
-web1  ansible_ssh_port=1022
 web2  ansible_ssh_port=2022
 web3  ansible_ssh_port=4022
 lb1   ansible_ssh_port=3022
