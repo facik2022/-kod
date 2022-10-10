@@ -11,7 +11,22 @@
     apt:
       name: nginx
       state: present
-  #
+
+  - name: use template
+    template:
+      src: index.html
+      dest: /var/www/html/index.html
+
+  - name: stop service cron on debian, if running
+    service:
+      name: nginx
+      state: stopped
+
+  - name: Make sure a service is running
+    service:
+      state: started
+      name:  nginx
+
   # - name: Make sure a service is running
   #   systemd:
   #     state: started
