@@ -28,7 +28,7 @@ pipeline {
 
           playbook_name = "task5.yml"
           // tags='createnginx'
-          ansiblePlaybook extras:   "  --become -u sshuser --vault-password-file    ./.ansible_vault_file --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"${WORKSPACE}/inventories/dev/\"\" ",
+          ansiblePlaybook extras:   "--timeout 30  --become -u sshuser --vault-password-file    ./.ansible_vault_file --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"${WORKSPACE}/inventories/dev/\"\" ",
           installation: 'ansible29',
           inventory: "${WORKSPACE}/ansible/inventories/dev/inventory",
           playbook: "${WORKSPACE}/ansible/${playbook_name}"
