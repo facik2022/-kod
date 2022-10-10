@@ -17,6 +17,12 @@
       src: index.html
       dest: /var/www/html/index.html
 
+  - name: Copy Nginx conf
+    copy:
+      src: site.conf
+      dest: /etc/nginx/sites-available/default
+    when: inventory_hostname=="lb1"
+
   - name: stop service cron on debian, if running
     service:
       name: nginx
@@ -26,6 +32,7 @@
     service:
       state: started
       name:  nginx
+
 
   # - name: Make sure a service is running
   #   systemd:
