@@ -1,0 +1,74 @@
+---
+- name: Test ping host with group web
+  hosts: web
+  #become: yes
+  gather_facts: yes
+  tasks:
+  - name: Git checkout
+    ping:
+
+  - name: Install the package "foo"
+    apt:
+      name: nginx
+      state: present
+  #
+  # - name: Make sure a service is running
+  #   systemd:
+  #     state: started
+  #     name:  nginx
+  #
+  # - name: Change file ownership, group and permissions
+  #   file:
+  #     path: /etc/nginx/sites-available/default
+  #     state: absent
+  #
+  # - name: Copy using inline content
+  #   copy:
+  #     content: |
+  #       server {
+  #         listen 80;
+  #         server_name test1.robointerativo.ru;
+  #         root /var/www/html/;
+  #         index index.html index.htm;
+  #         location / {
+  #           autoindex on;
+  #         }
+  #       }
+  #     dest: /etc/nginx/sites-available/default
+  #
+  # - name: Copy using inline content
+  #   copy:
+  #     content: |
+  #        <!DOCTYPE html>
+  #        <html>
+  #        <head>
+  #        <title>Welcome to nginx!</title>
+  #        <style>
+  #           body {
+  #               width: 35em;
+  #               margin: 0 auto;
+  #               font-family: Tahoma, Verdana, Arial, sans-serif;
+  #           }
+  #        </style>
+  #        <meta charset="utf-8">
+  #        </head>
+  #        <body>
+  #        <p> победа над ленью.</p>
+  #        </body>
+  #        </html>
+  #     dest: /var/www/html/index.htm
+  #
+  # - name: Make sure a service is running
+  #   systemd:
+  #     state: started
+  #     name:  nginx
+  #
+  # - name: stop service cron on debian, if running
+  #   systemd:
+  #     name: nginx
+  #     state: stopped
+  #
+  # - name: Make sure a service is running
+  #   systemd:
+  #     state: started
+  #     name:  nginx
