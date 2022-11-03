@@ -40,5 +40,5 @@
   - name: Copy file with owner and permissions
     copy:
       src: service.systemd
-      dest: /etc/systemd/system/shop.systemd
+      dest: /etc/systemd/system/shop.service
       mode: '0755'
