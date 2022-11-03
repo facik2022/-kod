@@ -26,6 +26,7 @@ pipeline {
         script {
           sh 'echo HELLO'
           sh 'pwd && ls -li'
+
           checkout([$class: 'GitSCM', branches: [[name: BRANCH]],
                doGenerateSubmoduleConfigurations: false,
                extensions: [[$class: 'RelativeTargetDirectory',
