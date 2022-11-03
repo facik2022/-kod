@@ -1,0 +1,64 @@
+pipeline {
+   agent any
+   environment {
+              CREDS= 'ssh_for_jenkins'
+       //     VDS_TOKEN     = credentials('clo')
+
+       //
+        }
+        parameters {
+
+
+              string(
+               name: 'BRANCH',
+               defaultValue: 'develop',
+               description: 'BRANCH'
+             )
+
+
+
+
+             }
+
+  stages() {
+    stage('Test1' ) {
+      steps {
+        script {
+          sh 'echo HELLO'
+          sh 'pwd && ls -li'
+          checkout([$class: 'GitSCM', branches: [[name: BRANCH]],
+               doGenerateSubmoduleConfigurations: false,
+               extensions: [[$class: 'RelativeTargetDirectory',
+               relativeTargetDir: 'app/']], gitTool: 'Default',
+               submoduleCfg: [], userRemoteConfigs: [[credentialsId: CREDS,
+               url: "git@github.com:RoboInterativo/ansible_russian_docs.git"]]])
+               sh "echo archiveAPP  && ls app && zip ${WORKSPACE}/ansible/files/app.zip app -r"
+          withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
+                    sh "echo \"${NEXUS_PASSWORD}\" > ./.ansible_vault_file"
+                }
+          withCredentials([sshUserPrivateKey(credentialsId: CREDS,
+                                            keyFileVariable: 'JENKINS_PRIVATE_KEY', passphraseVariable: 'PASSPHRASE',
+                                             usernameVariable: 'USERNAME')]) {
+
+          playbook_name = "docs.yml"
+          // tags='createnginx'
+          ansiblePlaybook extras:   "  -u root --vault-password-file    ./.ansible_vault_file --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"${WORKSPACE}/inventories/dev/\"\" ",
+          installation: 'ansible29',
+          inventory: "${WORKSPACE}/ansible/inventories/dev/inventory",
+          playbook: "${WORKSPACE}/ansible/${playbook_name}"
+
+
+        }
+        }
+       }
+     }
+  }
+  post {
+      success {
+
+          archiveArtifacts allowEmptyArchive: true, artifacts: '${WORKSPACE}/simple-back-front/front/*.zip', fingerprint: true
+
+      }
+    }
+
+}
