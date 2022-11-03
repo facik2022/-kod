@@ -19,6 +19,11 @@
       state: directory
       mode: '0755'
 
+  - name: Install apache httpd  (state=present is optional)
+    apt:
+      name: unzip
+      state: present
+
   - name: Extract foo.tgz into /var/lib/foo
     unarchive:
       src: app.zip
