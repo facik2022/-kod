@@ -42,3 +42,12 @@
       src: service.systemd
       dest: /etc/systemd/system/shop.systemd
       mode: '0755'
+
+  - name: just force systemd to reread configs (2.4 and above)
+    systemd:
+      daemon_reload: yes
+      
+  - name: stop service cron on debian, if running
+    systemd:
+      name: shop
+      state: restarted
