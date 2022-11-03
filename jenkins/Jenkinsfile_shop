@@ -32,7 +32,7 @@ pipeline {
                extensions: [[$class: 'RelativeTargetDirectory',
                relativeTargetDir: 'app/']], gitTool: 'Default',
                submoduleCfg: [], userRemoteConfigs: [[credentialsId: CREDS,
-               url: "git@github.com:RoboInterativo/ansible_russian_docs.git"]]])
+               url: "git@github.com:RoboInterativo/tires_shop.git"]]])
 
                sh "echo archiveAPP  && ls app && zip ${WORKSPACE}/ansible/files/app.zip app -r"
           withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
