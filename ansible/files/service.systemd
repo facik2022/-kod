@@ -20,4 +20,4 @@ PIDFile= /var/run/shop.pid
 PermissionsStartOnly=true
 
 
-ExecStart= /opt/shop/app/venv/bin/python3 /opt/shop/app/tires_shop/manage.py runserver 0.0.0.0:8000
+ExecStart=/opt/shop/venv/bin/python3 /opt/shop/app/tires_shop/manage.py runserver 0.0.0.0:8000
