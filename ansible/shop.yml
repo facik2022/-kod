@@ -23,7 +23,7 @@
     apt:
       name:
         - unzip
-        - python-virtualenv
+        - virtualenv
       state: present
 
   - name: Extract foo.tgz into /var/lib/foo
@@ -40,7 +40,7 @@
   - name: Copy file with owner and permissions
     copy:
       src: service.systemd
-      dest: /etc/systemd/system/shop.systemd
+      dest: /etc/systemd/system/shop.service
       mode: '0755'
 
   - name: just force systemd to reread configs (2.4 and above)
