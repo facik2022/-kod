@@ -28,3 +28,15 @@
     unarchive:
       src: app.zip
       dest: /opt/shop
+
+    # Install (Bottle) into the specified (virtualenv), inheriting none of the globally installed modules
+  - pip:
+      name: django
+      virtualenv: /opt/shop/venv
+      virtualenv_python: python3
+
+  - name: Copy file with owner and permissions
+    copy:
+      src: service.systemd
+      dest: /etc/systemd/system/shop.systemd
+      mode: '0755'

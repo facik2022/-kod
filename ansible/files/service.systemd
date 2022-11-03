@@ -14,10 +14,10 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-User  =  consul_user_name
-Group =  consul_group_name
-PIDFile= consul_pid_dir /consul_replicate.pid
+# User  =  consul_user_name
+# Group =  consul_group_name
+PIDFile= /var/run/shop.pid
 PermissionsStartOnly=true
 
 
-ExecStart= consul_replicator_home_dir /consul-replicate     -config  consul_conf_dir  /consul_replication.hcl 
+ExecStart= /opt/shop/app/venv/bin/python3 /opt/shop/app/tires_shop/manage.py runserver 0.0.0.0:8000
