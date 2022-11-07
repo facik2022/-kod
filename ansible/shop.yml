@@ -52,4 +52,23 @@
   - name: stop service cron on debian, if running
     systemd:
       name: shop
-      state: restarted
+
+  - name: Install the package "foo"
+    apt:
+      name: nginx
+      state: present
+
+  - name: Copy Nginx conf
+    template:
+      src: site.conf
+      dest: /etc/nginx/sites-available/default
+
+  - name: stop service cron on debian, if running
+    service:
+      name: nginx
+      state: stopped
+
+  - name: Make sure a service is running
+    service:
+      state: started
+      name:  nginx

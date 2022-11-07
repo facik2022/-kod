@@ -18,3 +18,4 @@ test_user:
 work_dir: /opt/shop/app/tires_shop
 virt_env_dir: /opt/shop/venv
 project_name:  tires_shop
+server_name: test1.robointerativo.ru

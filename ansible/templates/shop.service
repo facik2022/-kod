@@ -10,7 +10,7 @@ WorkingDirectory={{work_dir}}
 ExecStart={{virt_env_dir}}/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
-          --bind=0.0.0.0 \
+          --bind=127.0.0.1 \
           {{project_name}}.wsgi:application
 
 [Install]
