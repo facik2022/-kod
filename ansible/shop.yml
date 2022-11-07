@@ -52,6 +52,12 @@
   - name: stop service cron on debian, if running
     systemd:
       name: shop
+      status: stopped
+
+  - name: stop service cron on debian, if running
+    systemd:
+      name: shop
+      status: started
 
   - name: Install the package "foo"
     apt:
