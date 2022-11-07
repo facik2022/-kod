@@ -14,3 +14,7 @@ test_user:
   - user1
   - user2
   - user3
+
+work_dir: /opt/shop/app/tires_shop
+virt_env_dir: /opt/shop/venv
+project_name:  tires_shop
