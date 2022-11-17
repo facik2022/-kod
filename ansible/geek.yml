@@ -38,6 +38,7 @@
       name:
         - django
         - gunicorn
+        - pyyaml
       virtualenv: /opt/shop/venv
       virtualenv_python: python3
 
