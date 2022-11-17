@@ -33,7 +33,7 @@ pipeline {
                relativeTargetDir: 'app/']], gitTool: 'Default',
                submoduleCfg: [], userRemoteConfigs: [[credentialsId: CREDS,
                url: "git@github.com:chiefexb/geekslore.git"]]])
-
+               sh "rm ${WORKSPACE}/ansible/files/app.zip"
                sh "echo archiveAPP  && ls app && zip ${WORKSPACE}/ansible/files/app.zip app -r"
           withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
                     sh "echo \"${NEXUS_PASSWORD}\" > ./.ansible_vault_file"
