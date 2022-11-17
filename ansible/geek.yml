@@ -73,14 +73,14 @@
       dest: /opt/fullchain.pem
 
   - name: Copy using inline content
-      copy:
-        content: "{{  priv_key}}"
-        dest: /opt/privkey.pem
+    copy:
+      content: "{{  priv_key}}"
+      dest: /opt/privkey.pem
 
   - name: Copy using inline content
-      copy:
-        src: options-ssl-nginx.conf
-        dest: /opt
+    copy:
+      src: options-ssl-nginx.conf
+      dest: /opt
 
   - name: Copy using inline content
     copy:
