@@ -1,4 +1,4 @@
-work_dir: /opt/shop/app/geeks_dj
+work_dir: /opt/shop/app/geeks-dj
 virt_env_dir: /opt/shop/venv
 project_name:  geeks_dj
 server_name: test1.robointerativo.ru
