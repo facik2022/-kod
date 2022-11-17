@@ -67,6 +67,31 @@
       name: nginx
       state: present
 
+  - name: Copy using inline content
+    copy:
+      content: "{{full_chain}}"
+      dest: /opt/fullchain.pem
+
+  - name: Copy using inline content
+      copy:
+        content: "{{  priv_key}}"
+        dest: /opt/privkey.pem
+
+  - name: Copy using inline content
+      copy:
+        src: options-ssl-nginx.conf
+        dest: /opt
+
+  - name: Copy using inline content
+    copy:
+      src: options-ssl-nginx.conf
+      dest: /opt/ssl-dhparams.pem
+
+
+
+
+
+
   - name: Copy Nginx conf
     template:
       src: site.conf
